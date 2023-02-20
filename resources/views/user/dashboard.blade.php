@@ -10,7 +10,7 @@
                                 <strong>Total Income</strong>
                             </div>
                             <div class="count h3 pt-1" style="color: #4cd294">
-                                <strong>৳</strong> 12345
+                                <strong>৳</strong> 34,000
                             </div>
                             <div class="details" style="font-size: 12px">
                                 Details
@@ -31,10 +31,10 @@
                     <div class="card-body row">
                         <div class="info col-md-8">
                             <div class="box-title">
-                                <strong>Total Income</strong>
+                                <strong>Total Expenses</strong>
                             </div>
                             <div class="count h3 pt-1" style="color: #fd9f45">
-                                <strong>৳</strong> 12345
+                                <strong>৳</strong> 29,000
                             </div>
                             <div class="details" style="font-size: 12px">
                                 Details
@@ -57,7 +57,7 @@
                                 <strong>Total Savings</strong>
                             </div>
                             <div class="count h3 pt-1" style="color: #e83e8c">
-                                <strong>৳</strong> 12345
+                                <strong>৳</strong> 5,000
                             </div>
                             <div class="details" style="font-size: 12px">
                                 Details
@@ -84,55 +84,56 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                          <th scope="col">No.</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Purpose</th>
-                          <th scope="col">Amount</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Purpose</th>
+                            <th scope="col">Amount</th>
                         </tr>
-                      </thead>
-                      <tbody>
+                    </thead>
+                    <tbody>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
+                            <th scope="row">1</th>
+                            <td>12-02-2023</td>
+                            <td>Otto</td>
+                            <td><strong>৳</strong> 1000</td>
                         </tr>
                         <tr>
-                          <th scope="row">3</th>
-                          <td colspan="2">Larry the Bird</td>
-                          <td>@twitter</td>
+                            <th scope="row">2</th>
+                            <td>13-02-2023</td>
+                            <td>Thornton</td>
+                            <td><strong>৳</strong> 300</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>13-02-2023</td>
+                            <td>Larry the Bird</td>
+                            <td><strong>৳</strong> 3000</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td>Mark</td>
+                            <td>14-02-2023</td>
                             <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 500</td>
+                        </tr>
+                        <tr>
                             <th scope="row">5</th>
-                            <td>Jacob</td>
+                            <td>14-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 900</td>
+                        </tr>
+                        <tr>
                             <th scope="row">6</th>
-                            <td>Jacob</td>
+                            <td>16-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 5000</td>
+                        </tr>
+                        <tr>
                             <th scope="row">7</th>
-                            <td>Jacob</td>
+                            <td>18-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                      </tbody>
+                            <td><strong>৳</strong> 500</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -146,55 +147,56 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                          <th scope="col">No.</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Purpose</th>
-                          <th scope="col">Amount</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Purpose</th>
+                            <th scope="col">Amount</th>
                         </tr>
-                      </thead>
-                      <tbody>
+                    </thead>
+                    <tbody>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
+                            <th scope="row">1</th>
+                            <td>12-02-2023</td>
+                            <td>Otto</td>
+                            <td><strong>৳</strong> 1000</td>
                         </tr>
                         <tr>
-                          <th scope="row">3</th>
-                          <td colspan="2">Larry the Bird</td>
-                          <td>@twitter</td>
+                            <th scope="row">2</th>
+                            <td>13-02-2023</td>
+                            <td>Thornton</td>
+                            <td><strong>৳</strong> 300</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>13-02-2023</td>
+                            <td>Larry the Bird</td>
+                            <td><strong>৳</strong> 3000</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td>Mark</td>
+                            <td>14-02-2023</td>
                             <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 500</td>
+                        </tr>
+                        <tr>
                             <th scope="row">5</th>
-                            <td>Jacob</td>
+                            <td>14-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 900</td>
+                        </tr>
+                        <tr>
                             <th scope="row">6</th>
-                            <td>Jacob</td>
+                            <td>16-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
+                            <td><strong>৳</strong> 5000</td>
+                        </tr>
+                        <tr>
                             <th scope="row">7</th>
-                            <td>Jacob</td>
+                            <td>18-02-2023</td>
                             <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                      </tbody>
+                            <td><strong>৳</strong> 500</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
