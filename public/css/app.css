@@ -10920,3 +10920,10 @@ body{
     padding: 15px;
 }
 
+.register-image img{
+    margin: auto;
+    display: block;
+    height: 180px;
+    width: 180px;
+}
+

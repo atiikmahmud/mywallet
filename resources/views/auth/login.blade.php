@@ -10,7 +10,7 @@
                     <div class="card shadow wallet-card-area">
                         <div class="card-body mt-5">
                             <div class="login-image">
-                                <img src="{{ asset('img/login.png') }}" alt="My Wallet Login">
+                                <a href="{{ route('home') }}"><img src="{{ asset('img/login.png') }}" alt="My Wallet Login"></a>
                             </div>
                             <div class="login-title text-center mt-3">
                                 Login to My Wallet
@@ -42,7 +42,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="mb-1">
+                                    <div class="mb-3">
                                         If you are not registered, <a href="{{ route('register') }}">click here</a>.
                                     </div>
                                     <button type="submit" class="btn btn-primary">Login</button>
