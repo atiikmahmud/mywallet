@@ -1,0 +1,84 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap');
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+}
+.welcome-page-area {
+    background-image: url('../../public/storage/image/bg.jpg');
+    position: relative;
+    min-height: 100vh;
+}
+
+.welcome-page-area::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(41, 40, 40);
+    opacity: 0.5;
+}
+
+.welcome-container{
+    height: 100vh;
+}
+
+.welcome-row{
+    height: 100vh;
+}
+
+.wallet-card-area{
+    min-height: 675px;    
+}
+
+.wallet-logo img{
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+}
+
+.wallet-title{
+    color: #4cd294;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.wallet-slug{
+    color: #fd9f45;
+    font-size: 18px;
+}
+
+.register-btn a{
+    background-color: #4cd294;
+    color: #fff;
+    padding: 12px 65px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.register-btn a:hover{
+    background-color: #fd9f45;
+    color: #fff;
+}
+
+.login-btn a{
+    background-color: #4cd294;
+    color: #fff;
+    padding: 12px 79px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.login-btn a:hover{
+    background-color: #fd9f45;
+    color: #fff;
+}
+
