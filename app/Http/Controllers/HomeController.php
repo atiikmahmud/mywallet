@@ -17,8 +17,10 @@ class HomeController extends Controller
         if(Auth::user())
         {
             return redirect('/redirect');
-        }       
+        }
         
-        return view('welcome');
+        $title = 'Home Page';
+        
+        return view('welcome', compact('title'));
      }
 }

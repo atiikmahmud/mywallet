@@ -131,51 +131,38 @@
     </body>
 </html> --}}
 
-<!doctype html>
-<html lang="en">
+@extends('layouts.common')
+@section('title', $title)
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+@section('content')
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<div class="welcome-page-area">
+    <div class="container welcome-container">
+        <div class="row d-flex justify-content-center align-items-center welcome-row">
+            <div class="col-md-5 col-sm-8">
+                <div class="card shadow wallet-card-area">
+                    <div class="card-body mt-5 mb-5">
+                        <div class="wallet-logo">
+                            <img src="{{ asset('img/logo.png') }}" alt="My Wallet">
+                        </div>
+                        <div class="wallet-title text-center mt-5">
+                            My Wallet
+                        </div>
+                        <div class="wallet-slug text-center">
+                            Never spend your money before you have it..
+                        </div>
+                        <div class="register-btn text-center mt-5">
+                            <a href="{{ route('register') }}">Register</a>
+                        </div>
 
-</head>
-
-<body>
-    <div class="welcome-page-area">
-        <div class="container welcome-container">
-            <div class="row d-flex justify-content-center align-items-center welcome-row">
-                <div class="col-md-5">
-                    <div class="card shadow wallet-card-area">
-                        <div class="card-body mt-5 mb-5">
-                            <div class="wallet-logo">
-                                <img src="{{ asset('img/logo.png') }}" alt="My Wallet">
-                            </div>
-                            <div class="wallet-title text-center mt-5">
-                                My Wallet
-                            </div>
-                            <div class="wallet-slug text-center">
-                                Never spend your money before you have it..
-                            </div>
-                            <div class="register-btn text-center mt-5">
-                                <a href="{{ route('register') }}">Register</a>
-                            </div>
-
-                            <div class="login-btn text-center mt-4">
-                                <a href="{{ route('login') }}">Login</a>
-                            </div>
+                        <div class="login-btn text-center mt-4">
+                            <a href="{{ route('login') }}">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-
-    <script src="{{ mix('js/app.js') }}"></script>
-</body>
-
-</html>
+@endsection
