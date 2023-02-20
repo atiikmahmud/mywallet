@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css);
+@import url(https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
@@ -10824,7 +10826,7 @@ textarea.form-control-lg {
 
 /*# sourceMappingURL=bootstrap.css.map */
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    font-family: 'Shantell Sans', cursive;    
 }
 .welcome-page-area {
     /* background-image: url('../../public/storage/image/bg.jpg'); */
@@ -10860,18 +10862,20 @@ body{
     margin: auto;
     border-radius: 20px;
     height: 200px;
-    width: 200px;
+    width: 220px;
 }
 
 .wallet-title{
     color: #4cd294;
     font-size: 45px;
     font-weight: 500;
+    font-family: 'Kaushan Script', cursive;
 }
 
 .wallet-slug{
     color: #fd9f45;
     font-size: 18px;
+    font-family: 'Kaushan Script', cursive;
 }
 
 .register-btn a{
@@ -10915,6 +10919,7 @@ body{
     color: #4cd294;
     font-size: 30px;
     font-weight: 500;
+    font-family: 'Kaushan Script', cursive;
 }
 
 .login-form{
@@ -10931,6 +10936,7 @@ body{
 .navbar-brand{
     color: #fd9f45;
     font-weight: bold;
+    font-family: 'Kaushan Script', cursive;
 }
 
 .navbar-brand:hover{

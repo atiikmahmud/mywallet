@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <div class="card wallet-dashboard-area">
+                <div class="card shadow wallet-dashboard-area">
                     <div class="card-body">
                         <div class="main-body-area">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
