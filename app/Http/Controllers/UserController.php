@@ -30,6 +30,7 @@ class UserController extends Controller
             return redirect('/admin-dashboard');
         }
         
-        return view('dashboard');
+        $title = 'Dashboard';
+        return view('dashboard', compact('title'));
     }
 }

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css);
 @charset "UTF-8";
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
@@ -10826,12 +10827,12 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;    
 }
 .welcome-page-area {
-    background-image: url(/images/bg.jpg?be039f18a5c5dde2c522c698d6c5cdc7);
+    /* background-image: url('../../public/storage/image/bg.jpg'); */
     position: relative;
     min-height: 100vh;
 }
 
-.welcome-page-area::before{
+/* .welcome-page-area::before{
     position: absolute;
     content: '';
     top: 0;
@@ -10840,7 +10841,7 @@ body{
     right: 0;
     background: rgb(41, 40, 40);
     opacity: 0.5;
-}
+} */
 
 .welcome-container{
     height: 100vh;
@@ -10926,4 +10927,33 @@ body{
     height: 180px;
     width: 180px;
 }
+
+.navbar-brand{
+    color: #fd9f45;
+    font-weight: bold;
+}
+
+.navbar-brand:hover{
+    color: #4cd294;
+}
+
+.dashboard-bg{
+    background-image: url(/images/bg.jpg?be039f18a5c5dde2c522c698d6c5cdc7);
+}
+
+.dashboard-bg::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(71, 70, 70);
+    opacity: 0.5;
+}
+
+.wallet-dashboard-area{
+    min-height: 662px;
+}
+
 

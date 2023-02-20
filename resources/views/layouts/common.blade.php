@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="dashboard-bg">
     
     @section('content')
     @show
