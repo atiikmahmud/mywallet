@@ -41,26 +41,23 @@ class UserController extends Controller
         $title  = 'Profile';
         $userID = Auth::user()->id;
         $user   = User::where('id', '=', $userID)->first();
-        // dd($user->toArray());
         return view('user.profile', compact('title', 'user'));
     }
 
     public function updateProfile(Request $request)
     {
-        // dd($request->toArray());
-        
         $user = User::find($request->id);        
 
-        // $request->validate([
-        //     'name'       => 'required|string|max:255',
-        //     'phone'      => 'required|string|min:11|max:14|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users',
-        //     'password'   => 'nullable|string|min:8',
-        //     'n_password' => 'nullable|string|min:8',
-        //     'c_password' => 'nullable|string|min:8'
-        // ]);
+        $request->validate([
+            'name'       => 'required|string|max:255',
+            'phone'      => 'required|min:11|max:14|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'password'   => 'nullable|min:8|max:12',
+            'n_password' => 'nullable|min:8|max:12',
+            'c_password' => 'nullable|min:8|max:12'
+        ]);
 
         try {
-            if (!empty($request->password) && !empty($request->n_password) && !empty($request->n_password)) {
+            if ((!empty($request->password)) && (!empty($request->n_password)) && (!empty($request->n_password))) {
 
                 if (Hash::check($request->password, auth()->user()->password)) {
 
