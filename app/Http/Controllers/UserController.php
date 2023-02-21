@@ -70,6 +70,10 @@ class UserController extends Controller
                     return redirect()->back()->with('error','Current Password is not correct !');
                 }
             }
+            else{
+                return redirect()->back()->with('warning','New Password & Confirm Password field empty!');
+            }
+
             if (!empty($request->name)) {
                 $user->name = $request->name;
             }
