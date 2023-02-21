@@ -13,6 +13,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/redirect',         [UserController::class, 'redirect']);
     Route::get('/dashboard',        [UserController::class, 'index'])->name('dashboard');
+    Route::get('/profile',          [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile-update',  [UserController::class, 'updateProfile'])->name('user.profile.update');
 }); 
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {

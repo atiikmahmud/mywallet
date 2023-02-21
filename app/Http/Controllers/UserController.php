@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -32,5 +34,56 @@ class UserController extends Controller
         
         $title = 'Dashboard';
         return view('dashboard', compact('title'));
+    }
+
+    public function profile()
+    {
+        $title  = 'Profile';
+        $userID = Auth::user()->id;
+        $user   = User::where('id', '=', $userID)->first();
+        // dd($user->toArray());
+        return view('user.profile', compact('title', 'user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        // dd($request->toArray());
+        
+        $user = User::find($request->id);        
+
+        // $request->validate([
+        //     'name'       => 'required|string|max:255',
+        //     'phone'      => 'required|string|min:11|max:14|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users',
+        //     'password'   => 'nullable|string|min:8',
+        //     'n_password' => 'nullable|string|min:8',
+        //     'c_password' => 'nullable|string|min:8'
+        // ]);
+
+        try {
+            if (!empty($request->password) && !empty($request->n_password) && !empty($request->n_password)) {
+
+                if (Hash::check($request->password, auth()->user()->password)) {
+
+                    if ($request->n_password == $request->c_password) {
+                        $user->password = Hash::make($request->c_password);
+                    } else {
+                        return redirect()->back()->with('error','New Password & Confirm Password does not match !');
+                    }
+                } else {
+                    return redirect()->back()->with('error','Current Password is not correct !');
+                }
+            }
+            if (!empty($request->name)) {
+                $user->name = $request->name;
+            }
+            if (!empty($request->phone)) {
+                $user->phone = $request->phone;
+            }
+            $user->save();
+            return redirect()->back()->with('success', 'Profile Information Updated !');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error','Profile not update');
+        }
     }
 }
