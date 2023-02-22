@@ -47,7 +47,7 @@
                                                 </form>
                                             </div>
                                             <div class="col-md-4 text-end">
-                                                <a href="" class="btn btn-sm btn-dark">Add Expense</a>
+                                                <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#expense">Add Expense</button>
                                             </div>
                                         </div>
                                         <div class="income-inner-body-area mt-3">
@@ -58,6 +58,7 @@
                                                             <thead class="sticky-top bg-white">
                                                                 <tr>
                                                                     <th scope="col">No.</th>
+                                                                    <th scope="col">Title</th>
                                                                     <th scope="col">Date</th>
                                                                     <th scope="col">Purpose</th>
                                                                     <th scope="col">Amount</th>
@@ -67,6 +68,7 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <th scope="row">1</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -77,6 +79,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">2</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -87,6 +90,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">3</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -97,6 +101,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">4</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -107,6 +112,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">5</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -117,6 +123,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">6</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -127,6 +134,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">7</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -137,6 +145,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">8</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -147,6 +156,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">9</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -157,6 +167,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">10</th>
+                                                                    <td>Test Cost</td>
                                                                     <td>01-02-2023</td>
                                                                     <td>Business</td>
                                                                     <td>৳ 35,000</td>
@@ -184,4 +195,22 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Expense Modal Begin -->
+    <div class="modal fade" id="expense" tabindex="-1" aria-labelledby="expenseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="expenseLabel">Add Your expense</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @include('user.add-expense')
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Add Expense Modal End -->
+
 @endsection

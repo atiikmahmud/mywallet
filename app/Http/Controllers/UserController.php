@@ -42,10 +42,22 @@ class UserController extends Controller
         return view('user.income', compact('title'));
     }
 
+    public function addIncome(Request $request)
+    {
+        // dd($request->all());
+        return redirect()->back()->with('success','New Income Amount Added Successfully.');
+    }
+
     public function userExpense()
     {
         $title = 'Expenses';
         return view('user.expense', compact('title'));
+    }
+
+    public function addExpense(Request $request)
+    {
+        // dd($request->all());
+        return redirect()->back()->with('success','New Expense Amount Added Successfully.');
     }
 
     public function profile()
@@ -94,7 +106,7 @@ class UserController extends Controller
 
             $user->save();
             return redirect()->back()->with('success', 'Profile Information Updated !');
-            
+
         } catch (\Throwable $th) {
             //throw $th;
             return redirect()->back()->with('error','Profile not update');
