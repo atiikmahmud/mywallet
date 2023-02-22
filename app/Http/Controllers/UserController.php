@@ -36,35 +36,10 @@ class UserController extends Controller
         return view('user.dashboard', compact('title'));
     }
 
-    public function userIncome()
-    {
-        $title = 'Income';
-        return view('user.income', compact('title'));
-    }
-
-    public function addIncome(Request $request)
-    {
-        // dd($request->all());
-        return redirect()->back()->with('success','New Income Amount Added Successfully.');
-    }
-
-    public function userExpense()
-    {
-        $title = 'Expenses';
-        return view('user.expense', compact('title'));
-    }
-
-    public function addExpense(Request $request)
-    {
-        // dd($request->all());
-        return redirect()->back()->with('success','New Expense Amount Added Successfully.');
-    }
-
     public function profile()
     {
         $title  = 'Profile';
-        $userID = Auth::user()->id;
-        $user   = User::where('id', '=', $userID)->first();
+        $user   = User::where('id', Auth::user()->id)->first();
         return view('user.profile', compact('title', 'user'));
     }
 

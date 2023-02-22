@@ -66,122 +66,25 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($incomeList as $data)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
+                                                                    <th scope="row">{{ $loop->index+1 }}</th>
+                                                                    <td>{{ Str::limit($data->title, 20) }}</td>
+                                                                    <td>{{ $data->created_at->toFormattedDateString()}}</td>
+                                                                    <td>{{ $data->categories->name }}</td>
+                                                                    <td>৳ {{ $data->amount }}</td>
                                                                     <td>
                                                                         <a href="" class="btn btn-sm btn-warning">Edit</a>
                                                                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">6</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">8</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">9</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">10</th>
-                                                                    <td>Test Income</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>                                                    
+                                                                @endforeach                                             
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
-                                                    Lorem ipsum dolor sit amet consectetur.
+                                                    Total Income: ৳ {{ $incomeListSum }}
                                                 </div>
                                             </div>
                                         </div>
@@ -205,12 +108,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @include('user.add-income')
+                @include('user.add-income', ['categories' => $categories])
             </div>
             </div>
         </div>
         </div>
     </div>
     <!-- Add Income Modal End -->
-    
+
 @endsection

@@ -66,122 +66,25 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach($expenseList as $data)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
+                                                                    <th scope="row">{{ $loop->index+1 }}</th>
+                                                                    <td>{{ Str::limit($data->title, 25) }}</td>
+                                                                    <td>{{ $data->created_at->toFormattedDateString()}}</td>
+                                                                    <td>{{ $data->categories->name }}</td>
+                                                                    <td>৳ {{ $data->amount }}</td>
                                                                     <td>
                                                                         <a href="" class="btn btn-sm btn-warning">Edit</a>
                                                                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">4</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">5</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">6</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">7</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">8</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">9</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">10</th>
-                                                                    <td>Test Cost</td>
-                                                                    <td>01-02-2023</td>
-                                                                    <td>Business</td>
-                                                                    <td>৳ 35,000</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
-                                                                </tr>                                                    
+                                                                @endforeach                                             
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
-                                                    Lorem ipsum dolor sit amet consectetur.
+                                                    Total Expenses: ৳ {{ $expenseListSum }}
                                                 </div>
                                             </div>
                                         </div>
