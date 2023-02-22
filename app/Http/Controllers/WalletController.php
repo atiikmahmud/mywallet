@@ -7,10 +7,10 @@ use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class WalletController extends Controller
 {
+    // User Income Section
     public function userIncome()
     {
         $title = 'Income';
@@ -20,6 +20,7 @@ class WalletController extends Controller
         return view('user.income', compact('title', 'categories', 'incomeList', 'incomeListSum'));
     }
 
+    // User Add Income Section
     public function addIncome(Request $request)
     {
         $request->validate([
@@ -46,6 +47,58 @@ class WalletController extends Controller
         }
     }
 
+    // User Income Search by Date Range
+    public function incomeSearchByDate(Request $request)
+    {
+        $title = 'Search';
+        $categories = Category::where('status', 1)->get();
+
+        $inputStartDate = $request->start_date;
+        $inputEndDate   = $request->end_date;
+        
+        $start = $request->start_date.' '.'00:00:00';
+        $end   = $request->end_date.' '.'23:59:00';
+
+        $result = Wallet::whereBetween('created_at', [$start, $end])
+        ->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->get();
+
+        $resultSum = Wallet::whereBetween('created_at', [$start, $end])
+        ->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->sum('amount');
+        
+
+        return view('user.search.income-search-by-date-range', compact('title', 'categories', 'result', 'inputStartDate', 'inputEndDate', 'resultSum'));
+
+    }
+
+    // User Income Filter by Month
+    public function incomeSearchByMonth()
+    {
+        $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->created_at->format('Y-m');
+        });
+
+        dd($result->toArray());
+    }
+
+    // User Income Filter by Year
+    public function incomeSearchByYear()
+    {
+        $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->created_at->format('Y');
+        });
+
+        dd($result->toArray());
+    }
+
+    // User Expenses Section
     public function userExpense()
     {
         $title = 'Expenses';
@@ -55,6 +108,7 @@ class WalletController extends Controller
         return view('user.expense', compact('title', 'categories', 'expenseList', 'expenseListSum'));
     }
 
+    // User Add Expenses Section
     public function addExpense(Request $request)
     {
         $request->validate([
@@ -80,6 +134,7 @@ class WalletController extends Controller
         }
     }
 
+    // User Expenses Search by Date Range
     public function expenseSearchByDate(Request $request)
     {
         $title = 'Search';
@@ -102,53 +157,5 @@ class WalletController extends Controller
 
         return view('user.search.expense-search-by-date-range', compact('title', 'categories', 'result', 'inputStartDate', 'inputEndDate', 'resultSum'));
 
-    }
-
-    public function incomeSearchByDate(Request $request)
-    {
-        $title = 'Search';
-        $categories = Category::where('status', 1)->get();
-
-        $inputStartDate = $request->start_date;
-        $inputEndDate   = $request->end_date;
-        
-        $start = $request->start_date.' '.'00:00:00';
-        $end   = $request->end_date.' '.'23:59:00';
-
-        $result = Wallet::whereBetween('created_at', [$start, $end])
-        ->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->get();
-
-        $resultSum = Wallet::whereBetween('created_at', [$start, $end])
-        ->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->sum('amount');
-        
-
-        return view('user.search.income-search-by-date-range', compact('title', 'categories', 'result', 'inputStartDate', 'inputEndDate', 'resultSum'));
-
-    }
-
-    public function incomeSearchByMonth()
-    {
-        $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->orderBy('created_at','desc')
-        ->get()
-        ->groupBy(function (Wallet $item) {
-            return $item->created_at->format('Y-m');
-        });
-
-        dd($result->toArray());
-    }
-
-    public function incomeSearchByYear()
-    {
-        $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->orderBy('created_at','desc')
-        ->get()
-        ->groupBy(function (Wallet $item) {
-            return $item->created_at->format('Y');
-        });
-
-        dd($result->toArray());
     }
 }
