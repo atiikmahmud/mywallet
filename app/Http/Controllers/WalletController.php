@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -13,8 +14,8 @@ class WalletController extends Controller
     public function userIncome()
     {
         $title = 'Income';
-        $incomeList = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
-        $incomeListSum = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
+        $incomeList = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
+        $incomeListSum = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
         $categories = Category::where('status', 1)->get();
         return view('user.income', compact('title', 'categories', 'incomeList', 'incomeListSum'));
     }
@@ -48,8 +49,8 @@ class WalletController extends Controller
     public function userExpense()
     {
         $title = 'Expenses';
-        $expenseList = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
-        $expenseListSum = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
+        $expenseList = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
+        $expenseListSum = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
         $categories = Category::where('status', 0)->get();
         return view('user.expense', compact('title', 'categories', 'expenseList', 'expenseListSum'));
     }
@@ -129,9 +130,6 @@ class WalletController extends Controller
 
     public function incomeSearchByMonth()
     {
-        $title = 'Search';
-        $categories = Category::where('status', 0)->get();
-        
         $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
         ->orderBy('created_at','desc')
         ->get()
@@ -140,8 +138,6 @@ class WalletController extends Controller
         });
 
         dd($result->toArray());
-
-        return view('user.search.income-search-by-month', compact('title', 'categories', 'result'));
     }
 
     public function incomeSearchByYear()
