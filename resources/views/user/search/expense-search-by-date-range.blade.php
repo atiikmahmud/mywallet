@@ -26,23 +26,19 @@
                             <div class="income-body-section mt-3">
                                 <div class="card">
                                     <div class="card-header h4 text-center" style="background-color: #fd9f45">
-                                        Your Expenses
+                                        Search Your Expense by Date Range
                                     </div>
                                     <div class="card-body income-body-area">
                                         <div class="income-button-area row d-flex justify-content-between">
-                                            {{-- <div class="col-md-3">
-                                                <a href="" class="btn btn-sm btn-primary">Monthly</a>
-                                                <a href="" class="btn btn-sm btn-primary">Yearly</a>
-                                            </div> --}}
                                             <div class="col-md-6">
                                                 <form action="{{ route('search.expense.date') }}" method="POST">
                                                     @csrf
                                                     <div class="input-group">
                                                         <span class="input-group-text" id="basic-addon1">Search</span>
-                                                        <input type="date" name="start_date" class="form-control form-control-sm"
+                                                        <input type="date" name="start_date" value="{{ $inputStartDate }}" class="form-control form-control-sm"
                                                             placeholder="Search here.." aria-label="search">
                                                             <span class="px-1 pt-2">To</span>
-                                                        <input type="date" name="end_date" class="form-control form-control-sm"
+                                                        <input type="date" name="end_date" value="{{ $inputEndDate }}" class="form-control form-control-sm"
                                                             placeholder="Search here.." aria-label="search">
 
                                                         <button class="btn btn-sm btn-outline-secondary" type="submit"
@@ -50,8 +46,8 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div class="col-md-4 text-end">
-                                                <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#expense">Add Expense</button>
+                                            <div class="col-md-3 text-end">
+                                                <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#income">Add Income</button>
                                             </div>
                                         </div>
                                         <div class="income-inner-body-area mt-3">
@@ -70,25 +66,33 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($expenseList as $data)
+                                                                @if(count($result)>0)
+                                                                
+                                                                    @foreach($result as $data)
+                                                                    <tr>
+                                                                        <th scope="row">{{ $loop->index+1 }}</th>
+                                                                        <td>{{ Str::limit($data->title, 20) }}</td>
+                                                                        <td>{{ $data->created_at->toFormattedDateString()}}</td>
+                                                                        <td>{{ $data->categories->name }}</td>
+                                                                        <td>৳ {{ $data->amount }}</td>
+                                                                        <td>
+                                                                            <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    @endforeach 
+                                                                    
+                                                                @else
                                                                 <tr>
-                                                                    <th scope="row">{{ $loop->index+1 }}</th>
-                                                                    <td>{{ Str::limit($data->title, 25) }}</td>
-                                                                    <td>{{ $data->created_at->toFormattedDateString()}}</td>
-                                                                    <td>{{ $data->categories->name }}</td>
-                                                                    <td>৳ {{ $data->amount }}</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
+                                                                    <td colspan="6" class="text-center">Data Not Found!</td>
                                                                 </tr>
-                                                                @endforeach                                             
+                                                                @endif
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
-                                                    Total Expenses: ৳ {{ $expenseListSum }}
+                                                    Total Income: ৳ {{ $resultSum }}
                                                 </div>
                                             </div>
                                         </div>
@@ -103,21 +107,21 @@
         </div>
     </div>
 
-    <!-- Add Expense Modal Begin -->
-    <div class="modal fade" id="expense" tabindex="-1" aria-labelledby="expenseLabel" aria-hidden="true">
+    <!-- Add Income Modal Begin -->
+    <div class="modal fade" id="income" tabindex="-1" aria-labelledby="incomeLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="expenseLabel">Add Your expense</h1>
+                <h1 class="modal-title fs-5" id="incomeLabel">Add Your Income</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @include('user.add-expense')
+                @include('user.add-income', ['categories' => $categories])
             </div>
             </div>
         </div>
         </div>
     </div>
-    <!-- Add Expense Modal End -->
+    <!-- Add Income Modal End -->
 
 @endsection

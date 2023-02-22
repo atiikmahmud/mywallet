@@ -30,23 +30,27 @@
                                     </div>
                                     <div class="card-body income-body-area">
                                         <div class="income-button-area row d-flex justify-content-between">
-                                            <div class="col-md-4">
-                                                <a href="" class="btn btn-sm btn-primary">Daily</a>
-                                                <a href="" class="btn btn-sm btn-primary">Monthly</a>
-                                                <a href="" class="btn btn-sm btn-primary">Yearly</a>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <form action="">
+                                            {{-- <div class="col-md-3">
+                                                <a href="{{ route('search.income.month') }}" class="btn btn-sm btn-primary">Monthly</a>
+                                                <a href="{{ route('search.income.year') }}" class="btn btn-sm btn-primary">Yearly</a>
+                                            </div> --}}
+                                            <div class="col-md-6">
+                                                <form action="{{ route('search.income.date') }}" method="POST">
+                                                    @csrf
                                                     <div class="input-group">
-                                                        <input type="search" class="form-control form-control-sm"
-                                                            placeholder="Search here.." aria-label="search"
-                                                            aria-describedby="button-addon2">
+                                                        <span class="input-group-text" id="basic-addon1">Search</span>
+                                                        <input type="date" name="start_date" class="form-control form-control-sm"
+                                                            placeholder="Search here.." aria-label="search">
+                                                            <span class="px-1 pt-2">To</span>
+                                                        <input type="date" name="end_date" class="form-control form-control-sm"
+                                                            placeholder="Search here.." aria-label="search">
+
                                                         <button class="btn btn-sm btn-outline-secondary" type="submit"
                                                             id="button-addon2"><i class="fas fa-search"></i></button>
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div class="col-md-4 text-end">
+                                            <div class="col-md-3 text-end">
                                                 <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#income">Add Income</button>
                                             </div>
                                         </div>
@@ -66,19 +70,29 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($incomeList as $data)
+                                                                @if(count($incomeList)>0)
+                                                                
+                                                                    @foreach($incomeList as $data)
+                                                                    <tr>
+                                                                        <th scope="row">{{ $loop->index+1 }}</th>
+                                                                        <td>{{ Str::limit($data->title, 20) }}</td>
+                                                                        <td>{{ $data->created_at->toFormattedDateString()}}</td>
+                                                                        <td>{{ $data->categories->name }}</td>
+                                                                        <td>৳ {{ $data->amount }}</td>
+                                                                        <td>
+                                                                            <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    @endforeach   
+                                                                
+                                                                @else
+
                                                                 <tr>
-                                                                    <th scope="row">{{ $loop->index+1 }}</th>
-                                                                    <td>{{ Str::limit($data->title, 20) }}</td>
-                                                                    <td>{{ $data->created_at->toFormattedDateString()}}</td>
-                                                                    <td>{{ $data->categories->name }}</td>
-                                                                    <td>৳ {{ $data->amount }}</td>
-                                                                    <td>
-                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                                    </td>
+                                                                    <td colspan="6" class="text-center">Data Not Found!</td>
                                                                 </tr>
-                                                                @endforeach                                             
+
+                                                                @endif
                                                             </tbody>
                                                         </table>
                                                     </div>

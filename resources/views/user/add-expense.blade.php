@@ -17,7 +17,7 @@
                 <div class="mb-3">
                     <label for="purpose" class="form-label">Purpose</label>
                     <select class="form-select" aria-label="purpose" name="purpose" required>
-                        <option selected>Select your income purpose</option>
+                        <option selected>Select your expense purpose</option>
                         @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
