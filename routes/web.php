@@ -12,7 +12,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/redirect',         [UserController::class, 'redirect']);
-    Route::get('/dashboard',        [UserController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard',        [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/income',           [UserController::class, 'userIncome'])->name('user.income');
+    Route::get('/expense',          [UserController::class, 'userExpense'])->name('user.expense');
     Route::get('/profile',          [UserController::class, 'profile'])->name('user.profile');
     Route::post('/profile-update',  [UserController::class, 'updateProfile'])->name('user.profile.update');
 }); 

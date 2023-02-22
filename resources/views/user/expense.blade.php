@@ -14,14 +14,14 @@
                                     <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('user.income') }}">Income</a>
+                                    <a class="nav-link" href="{{ route('user.income') }}">Income</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Expense</a>
+                                    <a class="nav-link active" href="{{ route('user.expense') }}">Expense</a>
                                 </li>
                             </ul>
 
-                            <h1 class="text-center mt-2">Income Page</h1>
+                            <h1 class="text-center mt-2">Expense Page</h1>
                             <p style="text-align: justify;">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aperiam harum optio
                                 voluptatibus, earum rerum itaque at fugit asperiores dolor quae, dignissimos id

@@ -33,7 +33,19 @@ class UserController extends Controller
         }
         
         $title = 'Dashboard';
-        return view('dashboard', compact('title'));
+        return view('user.dashboard', compact('title'));
+    }
+
+    public function userIncome()
+    {
+        $title = 'Income';
+        return view('user.income', compact('title'));
+    }
+
+    public function userExpense()
+    {
+        $title = 'Expense';
+        return view('user.expense', compact('title'));
     }
 
     public function profile()

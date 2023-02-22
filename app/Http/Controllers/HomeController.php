@@ -21,6 +21,6 @@ class HomeController extends Controller
         
         $title = 'Home Page';
         
-        return view('welcome', compact('title'));
+        return view('home', compact('title'));
      }
 }
