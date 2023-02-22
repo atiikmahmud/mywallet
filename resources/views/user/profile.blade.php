@@ -97,8 +97,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="mb-3">*If you are not interested change password, don't fill
-                                                password field.</div>
+                                            <div class="mb-3">*If you are not interested change password, leave blank password field.</div>
                                             <div class="col-md-6">
                                                 <div>
                                                     <button type="submit" class="btn btn-primary">Update</button>

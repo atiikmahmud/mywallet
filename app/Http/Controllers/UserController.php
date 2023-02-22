@@ -44,7 +44,7 @@ class UserController extends Controller
 
     public function userExpense()
     {
-        $title = 'Expense';
+        $title = 'Expenses';
         return view('user.expense', compact('title'));
     }
 
@@ -69,8 +69,11 @@ class UserController extends Controller
         ]);
 
         try {
-            if ((!empty($request->password)) && (!empty($request->n_password)) && (!empty($request->n_password))) {
-
+            if (!empty($request->password)) {
+                if(empty($request->n_password) || empty($request->c_password))
+                {
+                    return redirect()->back()->with('error','New password & Confirm password is required');
+                }
                 if (Hash::check($request->password, auth()->user()->password)) {
 
                     if ($request->n_password == $request->c_password) {
@@ -82,18 +85,16 @@ class UserController extends Controller
                     return redirect()->back()->with('error','Current Password is not correct !');
                 }
             }
-            else{
-                return redirect()->back()->with('warning','New Password & Confirm Password field empty!');
-            }
-
             if (!empty($request->name)) {
                 $user->name = $request->name;
             }
             if (!empty($request->phone)) {
                 $user->phone = $request->phone;
             }
+
             $user->save();
             return redirect()->back()->with('success', 'Profile Information Updated !');
+            
         } catch (\Throwable $th) {
             //throw $th;
             return redirect()->back()->with('error','Profile not update');

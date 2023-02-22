@@ -18,7 +18,7 @@
                                     <a class="nav-link" href="{{ route('user.income') }}">Income</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Expense</a>
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Expenses</a>
                                 </li>
                             </ul>
 
