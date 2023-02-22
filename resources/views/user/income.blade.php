@@ -25,7 +25,7 @@
                             <!-- Body Section Begin -->
                             <div class="income-body-section mt-3">
                                 <div class="card">
-                                    <div class="card-header h4 text-center">
+                                    <div class="card-header h4 text-center" style="background-color: #4cd294">
                                         Your Income
                                     </div>
                                     <div class="card-body income-body-area">

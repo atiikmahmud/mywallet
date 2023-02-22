@@ -8,7 +8,7 @@
                 <div class="card shadow wallet-dashboard-area">
                     <div class="card-body">
                         <div class="main-body-area">
-
+                            <!-- Navbar Section Begin -->
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -20,20 +20,164 @@
                                     <a class="nav-link active" href="{{ route('user.expense') }}">Expenses</a>
                                 </li>
                             </ul>
+                            <!-- Navbar Section End -->
 
-                            <h1 class="text-center mt-2">Expenses Page</h1>
-                            <p style="text-align: justify;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aperiam harum optio
-                                voluptatibus, earum rerum itaque at fugit asperiores dolor quae, dignissimos id
-                                recusandae quos, voluptas tenetur quam dolorum fuga. Tenetur architecto autem
-                                temporibus maxime optio corporis, repellendus nam assumenda, ducimus excepturi
-                                veritatis deserunt laboriosam quidem exercitationem nulla obcaecati quas eius quia
-                                itaque doloribus, odio quod vero voluptates magni. Saepe tenetur suscipit voluptate?
-                                Corrupti accusamus officia amet consectetur non impedit saepe dolorem assumenda illo
-                                aliquid ipsum dolores repudiandae voluptates qui, commodi dicta iste vero error
-                                iure. Sunt commodi magni ut nemo, hic quos a eos aut esse, mollitia natus
-                                voluptates.
-                            </p>
+                            <!-- Body Section Begin -->
+                            <div class="income-body-section mt-3">
+                                <div class="card">
+                                    <div class="card-header h4 text-center" style="background-color: #fd9f45">
+                                        Your Expenses
+                                    </div>
+                                    <div class="card-body income-body-area">
+                                        <div class="income-button-area row d-flex justify-content-between">
+                                            <div class="col-md-4">
+                                                <a href="" class="btn btn-sm btn-primary">Daily</a>
+                                                <a href="" class="btn btn-sm btn-primary">Monthly</a>
+                                                <a href="" class="btn btn-sm btn-primary">Yearly</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <form action="">
+                                                    <div class="input-group">
+                                                        <input type="search" class="form-control form-control-sm"
+                                                            placeholder="Search here.." aria-label="search"
+                                                            aria-describedby="button-addon2">
+                                                        <button class="btn btn-sm btn-outline-secondary" type="submit"
+                                                            id="button-addon2"><i class="fas fa-search"></i></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-4 text-end">
+                                                <a href="" class="btn btn-sm btn-dark">Add Expense</a>
+                                            </div>
+                                        </div>
+                                        <div class="income-inner-body-area mt-3">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="income-table">
+                                                        <table class="table table-striped">
+                                                            <thead class="sticky-top bg-white">
+                                                                <tr>
+                                                                    <th scope="col">No.</th>
+                                                                    <th scope="col">Date</th>
+                                                                    <th scope="col">Purpose</th>
+                                                                    <th scope="col">Amount</th>
+                                                                    <th scope="col" style="width: 15%">Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">1</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">2</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">3</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">4</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">5</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">6</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">7</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">8</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">9</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">10</th>
+                                                                    <td>01-02-2023</td>
+                                                                    <td>Business</td>
+                                                                    <td>৳ 35,000</td>
+                                                                    <td>
+                                                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                                    </td>
+                                                                </tr>                                                    
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    Lorem ipsum dolor sit amet consectetur.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Body Section End -->
                         </div>
                     </div>
                 </div>
