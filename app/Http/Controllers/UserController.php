@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -42,7 +43,31 @@ class UserController extends Controller
 
         $totalSavings = $totalIncome - $totalExpense;
 
-        return view('user.dashboard', compact('title', 'totalIncome', 'totalExpense', 'totalSavings'));
+        $incomeSummery = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->category_id;
+        });
+
+        $incomeSummeryResult = collect();
+        foreach ($incomeSummery as $key => $value) {
+            $incomeSummeryResult[$key] = $value->sum('amount');
+        }
+
+        $expenseSummery = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->category_id;
+        });
+
+        $expenseSummeryResult = collect();
+        foreach ($expenseSummery as $key => $value) {
+            $expenseSummeryResult[$key] = $value->sum('amount');
+        }        
+
+        return view('user.dashboard', compact('title', 'totalIncome', 'totalExpense', 'totalSavings', 'incomeSummeryResult', 'expenseSummeryResult'));
     }
 
     public function profile()

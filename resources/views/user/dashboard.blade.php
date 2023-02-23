@@ -123,59 +123,23 @@
                                         <div class="card-header text-light" style="background-color: #4cd294">
                                             <strong>Income Summery</strong>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body summery-body">
                                             <table class="table table-striped">
-                                                <thead>
+                                                <thead class="sticky-top bg-white">
                                                     <tr>
                                                         <th scope="col">No.</th>
-                                                        <th scope="col">Date</th>
                                                         <th scope="col">Purpose</th>
                                                         <th scope="col">Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach($incomeSummeryResult as $item => $value)
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>12-02-2023</td>
-                                                        <td>Otto</td>
-                                                        <td><strong>৳</strong> 1000</td>
+                                                        <th scope="row">{{ $loop->index + 1 }}</th>
+                                                        <td>{{ \App\Models\Category::where('id', $item)->pluck('name')->first() }}</td>
+                                                        <td><strong>৳</strong> {{ number_format($value) }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>13-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 300</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>13-02-2023</td>
-                                                        <td>Larry the Bird</td>
-                                                        <td><strong>৳</strong> 3000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>14-02-2023</td>
-                                                        <td>Otto</td>
-                                                        <td><strong>৳</strong> 500</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">5</th>
-                                                        <td>14-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 900</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">6</th>
-                                                        <td>16-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 5000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">7</th>
-                                                        <td>18-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 500</td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -186,59 +150,23 @@
                                         <div class="card-header text-light" style="background-color: #fd9f45">
                                             <strong>Expenses Summery</strong>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body summery-body">
                                             <table class="table table-striped">
-                                                <thead>
+                                                <thead class="sticky-top bg-white">
                                                     <tr>
                                                         <th scope="col">No.</th>
-                                                        <th scope="col">Date</th>
                                                         <th scope="col">Purpose</th>
                                                         <th scope="col">Amount</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach($expenseSummeryResult as $item => $value)
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>12-02-2023</td>
-                                                        <td>Otto</td>
-                                                        <td><strong>৳</strong> 1000</td>
+                                                        <th scope="row">{{ $loop->index + 1 }}</th>
+                                                        <td>{{ \App\Models\Category::where('id', $item)->pluck('name')->first() }}</td>
+                                                        <td><strong>৳</strong> {{ number_format($value) }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>13-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 300</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>13-02-2023</td>
-                                                        <td>Larry the Bird</td>
-                                                        <td><strong>৳</strong> 3000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">4</th>
-                                                        <td>14-02-2023</td>
-                                                        <td>Otto</td>
-                                                        <td><strong>৳</strong> 500</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">5</th>
-                                                        <td>14-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 900</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">6</th>
-                                                        <td>16-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 5000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">7</th>
-                                                        <td>18-02-2023</td>
-                                                        <td>Thornton</td>
-                                                        <td><strong>৳</strong> 500</td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

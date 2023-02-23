@@ -177,3 +177,8 @@ body{
     background:#4cd294; 
   }
 
+  .summery-body{
+    height: 376px;
+    overflow-y: auto;
+  }
+
