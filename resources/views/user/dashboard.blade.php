@@ -20,6 +20,24 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('user.expense') }}">Expenses</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Loan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Owed</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Pay Plan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Report</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.expense') }}">Contact</a>
+                                </li>
                             </ul>
 
                             <!-- Top Card Section Begin -->
