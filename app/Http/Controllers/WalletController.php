@@ -258,8 +258,6 @@ class WalletController extends Controller
     # User Expense Edit
     public function editExpense(Request $request)
     {
-        // dd($request->all());
-
         $request->validate([
             'title'      => 'required|string|max:255',
             'amount'     => 'required',
