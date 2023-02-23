@@ -146,7 +146,12 @@ body{
 }
 
 .income-table{
-    height: 367px;
+    height: 358px;
+    overflow-y: auto;
+}
+
+.income-month-table{
+    height: 400px;
     overflow-y: auto;
 }
 

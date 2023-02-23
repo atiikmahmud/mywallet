@@ -26,7 +26,7 @@
                             <div class="income-body-section mt-3">
                                 <div class="card">
                                     <div class="card-header h4 text-center" style="background-color: #4cd294">
-                                        Your Income
+                                        Your Income Filter by Year
                                     </div>
                                     <div class="card-body income-body-area">
                                         <div class="income-button-area row d-flex justify-content-between">
@@ -62,48 +62,33 @@
                                         <div class="income-inner-body-area mt-3">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <div class="income-table">
+                                                    <div class="income-month-table">
                                                         <table class="table table-striped">
                                                             <thead class="sticky-top bg-white">
                                                                 <tr>
                                                                     <th scope="col">No.</th>
-                                                                    <th scope="col">Title</th>
-                                                                    <th scope="col">Date</th>
-                                                                    <th scope="col">Purpose</th>
-                                                                    <th scope="col">Amount</th>
-                                                                    <th scope="col" style="width: 15%">Actions</th>
+                                                                    <th scope="col">Year</th>
+                                                                    <th scope="col">Monthly Amount</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @if (count($incomeList) > 0)
-                                                                    @foreach ($incomeList as $data)
+                                                                @if (count($sumOfResult) > 0)
+                                                                    @foreach ($sumOfResult as $item => $value)
                                                                         <tr>
                                                                             <th scope="row">{{ $loop->index + 1 }}</th>
-                                                                            <td>{{ Str::limit($data->title, 20) }}</td>
-                                                                            <td>{{ $data->created_at->toFormattedDateString() }}
-                                                                            </td>
-                                                                            <td>{{ $data->categories->name }}</td>
-                                                                            <td>৳ {{ $data->amount }}</td>
-                                                                            <td>
-                                                                                <a href=""
-                                                                                    class="btn btn-sm btn-warning">Edit</a>
-                                                                                <a href=""
-                                                                                    class="btn btn-sm btn-danger">Delete</a>
-                                                                            </td>
+                                                                            <td>{{ $item }}</td>
+                                                                            <td>৳ {{ $value }}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
                                                                     <tr>
-                                                                        <td colspan="6" class="text-center">Data Not
+                                                                        <td colspan="3" class="text-center">Data Not
                                                                             Found!</td>
                                                                     </tr>
                                                                 @endif
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div>
-                                                <div class="card-footer">
-                                                    Total Income: ৳ {{ $incomeListSum }}
                                                 </div>
                                             </div>
                                         </div>

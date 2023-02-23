@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class WalletController extends Controller
 {
-    // User Income Section
+    # User Income Section
     public function userIncome()
     {
         $title = 'Income';
@@ -20,7 +20,7 @@ class WalletController extends Controller
         return view('user.income', compact('title', 'categories', 'incomeList', 'incomeListSum'));
     }
 
-    // User Add Income Section
+    # User Add Income Section
     public function addIncome(Request $request)
     {
         $request->validate([
@@ -47,7 +47,7 @@ class WalletController extends Controller
         }
     }
 
-    // User Income Search by Date Range
+    # User Income Search by Date Range
     public function incomeSearchByDate(Request $request)
     {
         $title = 'Search';
@@ -61,6 +61,7 @@ class WalletController extends Controller
 
         $result = Wallet::whereBetween('created_at', [$start, $end])
         ->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
         ->get();
 
         $resultSum = Wallet::whereBetween('created_at', [$start, $end])
@@ -72,35 +73,48 @@ class WalletController extends Controller
 
     }
 
-    // User Income Filter by Month
+    # User Income Filter by Month
     public function incomeSearchByMonth()
     {
+        $title = 'Monthly Income';
+        $categories = Category::where('status', 1)->get();
+        
         $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->orderBy('created_at','desc')
         ->get()
         ->groupBy(function (Wallet $item) {
             return $item->created_at->format('Y-m');
         });
+        $sumOfResult = collect();
+        foreach ($result as $key => $value) {
+            $sumOfResult[$key] = $value->sum('amount');
+        }
 
-        dd($result->toArray());
+        return view('user.search.income-filter-by-month', compact('title', 'categories', 'sumOfResult'));
     }
 
-    // User Income Filter by Year
+    # User Income Filter by Year
     public function incomeSearchByYear()
     {
+        $title = 'Yearly Income';
+        $categories = Category::where('status', 1)->get();
+        
         $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
         ->orderBy('created_at','desc')
         ->get()
         ->groupBy(function (Wallet $item) {
             return $item->created_at->format('Y');
         });
+        $sumOfResult = collect();
+        foreach ($result as $key => $value) {
+            $sumOfResult[$key] = $value->sum('amount');
+        }
 
-        dd($result->toArray());
+        return view('user.search.income-filter-by-year', compact('title', 'categories', 'sumOfResult'));
     }
 
     /* ======================================================================================================================== */
 
-    // User Expenses Section
+    # User Expenses Section
     public function userExpense()
     {
         $title = 'Expenses';
@@ -110,7 +124,7 @@ class WalletController extends Controller
         return view('user.expense', compact('title', 'categories', 'expenseList', 'expenseListSum'));
     }
 
-    // User Add Expenses Section
+    # User Add Expenses Section
     public function addExpense(Request $request)
     {
         $request->validate([
@@ -136,7 +150,7 @@ class WalletController extends Controller
         }
     }
 
-    // User Expenses Search by Date Range
+    # User Expenses Search by Date Range
     public function expenseSearchByDate(Request $request)
     {
         $title = 'Search';
@@ -159,5 +173,44 @@ class WalletController extends Controller
 
         return view('user.search.expense-search-by-date-range', compact('title', 'categories', 'result', 'inputStartDate', 'inputEndDate', 'resultSum'));
 
+    }
+
+    # User Expense Filter by Month
+    public function expenseSearchByMonth()
+    {
+        $title = 'Monthly Expense';
+        $categories = Category::where('status', 0)->get();
+        
+        $result = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->created_at->format('Y-m');
+        });
+        $sumOfResult = collect();
+        foreach ($result as $key => $value) {
+            $sumOfResult[$key] = $value->sum('amount');
+        }
+
+        return view('user.search.expense-filter-by-month', compact('title', 'categories', 'sumOfResult'));
+    }
+
+    # User Expense Filter by Year
+    public function expenseSearchByYear()
+    {
+        $title = 'Yearly Expense';
+        $categories = Category::where('status', 0)->get();
+        
+        $result = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
+        ->get()
+        ->groupBy(function (Wallet $item) {
+            return $item->created_at->format('Y');
+        });
+        $sumOfResult = collect();
+        foreach ($result as $key => $value) {
+            $sumOfResult[$key] = $value->sum('amount');
+        }
+
+        return view('user.search.expense-filter-by-year', compact('title', 'categories', 'sumOfResult'));
     }
 }
