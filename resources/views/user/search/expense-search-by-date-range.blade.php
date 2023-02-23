@@ -82,7 +82,7 @@
                                                                             <td>{{ $data->created_at->toFormattedDateString() }}
                                                                             </td>
                                                                             <td>{{ $data->categories->name }}</td>
-                                                                            <td>৳ {{ $data->amount }}</td>
+                                                                            <td>৳ {{ number_format($data->amount) }}</td>
                                                                             <td>
                                                                                 <a href=""
                                                                                     class="btn btn-sm btn-warning"

@@ -44,7 +44,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-4">
                                     <div class="box-section mb-2">
-                                        <a href="#" class="text-decoration-none text-dark">
+                                        <a href="{{ route('user.income') }}" class="text-decoration-none text-dark">
                                             <div class="card shadow" style="border-left: 5px solid #4cd294">
                                                 <div class="card-body row">
                                                     <div class="info col-md-8">
@@ -52,7 +52,7 @@
                                                             <strong>Total Income</strong>
                                                         </div>
                                                         <div class="count h3 pt-1" style="color: #4cd294">
-                                                            <strong>৳</strong> 34,000
+                                                            <strong>৳</strong> {{ number_format($totalIncome) }}
                                                         </div>
                                                         <div class="details" style="font-size: 12px">
                                                             Details
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="box-section mb-2">
-                                        <a href="#" class="text-decoration-none text-dark">
+                                        <a href="{{ route('user.expense') }}" class="text-decoration-none text-dark">
                                             <div class="card shadow" style="border-left: 5px solid #fd9f45">
                                                 <div class="card-body row">
                                                     <div class="info col-md-8">
@@ -77,7 +77,7 @@
                                                             <strong>Total Expenses</strong>
                                                         </div>
                                                         <div class="count h3 pt-1" style="color: #fd9f45">
-                                                            <strong>৳</strong> 29,000
+                                                            <strong>৳</strong> {{ number_format($totalExpense) }}
                                                         </div>
                                                         <div class="details" style="font-size: 12px">
                                                             Details
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="box-section mb-2">
-                                        <a href="#" class="text-decoration-none text-dark">
+                                        <a href="{{ route('user.dashboard') }}" class="text-decoration-none text-dark">
                                             <div class="card shadow" style="border-left: 5px solid #e83e8c">
                                                 <div class="card-body row">
                                                     <div class="info col-md-8">
@@ -100,7 +100,7 @@
                                                             <strong>Total Savings</strong>
                                                         </div>
                                                         <div class="count h3 pt-1" style="color: #e83e8c">
-                                                            <strong>৳</strong> 5,000
+                                                            <strong>৳</strong> {{ number_format($totalSavings) }}
                                                         </div>
                                                         <div class="details" style="font-size: 12px">
                                                             Details

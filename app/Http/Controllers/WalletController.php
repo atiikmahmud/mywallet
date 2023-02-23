@@ -7,7 +7,6 @@ use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Ui\Presets\React;
 
 class WalletController extends Controller
 {
@@ -81,6 +80,7 @@ class WalletController extends Controller
         $categories = Category::where('status', 1)->get();
         
         $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
+        ->orderBy('created_at','desc')
         ->get()
         ->groupBy(function (Wallet $item) {
             return $item->created_at->format('Y-m');

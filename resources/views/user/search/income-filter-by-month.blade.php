@@ -78,7 +78,7 @@
                                                                             <th scope="row">{{ $loop->index + 1 }}</th>
                                                                             <td>{{ \Carbon\Carbon::parse($item)->format('M-Y') }}
                                                                             </td>
-                                                                            <td>৳ {{ $value }}</td>
+                                                                            <td>৳ {{ number_format($value) }}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 @else

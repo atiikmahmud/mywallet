@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,7 +35,14 @@ class UserController extends Controller
         }
         
         $title = 'Dashboard';
-        return view('user.dashboard', compact('title'));
+
+        $totalIncome = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
+
+        $totalExpense = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
+
+        $totalSavings = $totalIncome - $totalExpense;
+
+        return view('user.dashboard', compact('title', 'totalIncome', 'totalExpense', 'totalSavings'));
     }
 
     public function profile()
