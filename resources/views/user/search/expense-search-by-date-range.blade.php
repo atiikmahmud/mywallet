@@ -112,7 +112,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-footer">
-                                                    Total Income: ৳ {{ $resultSum }}
+                                                    Total Income: ৳ {{ number_format($resultSum) }}
                                                 </div>
                                             </div>
                                         </div>
