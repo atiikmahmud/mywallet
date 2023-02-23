@@ -8,6 +8,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        dd('report-page');
+        $title = 'Report';
+        return view('user.report.report', compact('title'));
     }
 }

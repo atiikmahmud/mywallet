@@ -8,16 +8,19 @@ class TransectionController extends Controller
 {
     public function loan()
     {
-        dd('Loan-Page');
+        $title = 'Loan';
+        return view('user.transection.loan', compact('title'));
     }
 
     public function owed()
     {
-        dd('Owed-Page');
+        $title = 'Owed';
+        return view('user.transection.owed', compact('title'));
     }
 
     public function payplan()
     {
-        dd('PayPlan');
+        $title = 'Pay-Plan';
+        return view('user.transection.payplan', compact('title'));
     }
 }
