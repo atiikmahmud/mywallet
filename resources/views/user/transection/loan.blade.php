@@ -15,7 +15,7 @@
                             <!-- Body Section Begin -->
                             <div class="income-body-section mt-3">
                                 <div class="card">
-                                    <div class="card-header h4 text-center" style="background-color: #eb4f4f">
+                                    <div class="card-header h4 text-center" style="background-color: #EC7063 ">
                                         Your Loan
                                     </div>
                                     <div class="card-body income-body-area">

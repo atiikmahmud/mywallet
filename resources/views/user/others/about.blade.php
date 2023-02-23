@@ -15,8 +15,8 @@
                             <!-- Body Section Begin -->
                             <div class="income-body-section mt-3">
                                 <div class="card">
-                                    <div class="card-header h4 text-center" style="background-color: #c13ce9">
-                                        About My Wallet
+                                    <div class="card-header h4 text-center" style="background-color: #BB8FCE">
+                                        About
                                     </div>
                                     <div class="card-body income-body-area">
                                         

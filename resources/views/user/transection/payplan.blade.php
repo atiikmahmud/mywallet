@@ -15,7 +15,7 @@
                             <!-- Body Section Begin -->
                             <div class="income-body-section mt-3">
                                 <div class="card">
-                                    <div class="card-header h4 text-center" style="background-color: #2990f0">
+                                    <div class="card-header h4 text-center" style="background-color: #85C1E9">
                                         Your Payment Plan
                                     </div>
                                     <div class="card-body income-body-area">

@@ -15,7 +15,7 @@
                             <!-- Body Section Begin -->
                             <div class="income-body-section mt-3">
                                 <div class="card">
-                                    <div class="card-header h4 text-center" style="background-color: #1ff377">
+                                    <div class="card-header h4 text-center" style="background-color: #48C9B0">
                                         Your Owed
                                     </div>
                                     <div class="card-body income-body-area">
