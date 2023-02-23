@@ -89,11 +89,21 @@
                                                                             <td>৳ {{ $data->amount }}</td>
                                                                             <td>
                                                                                 <a href=""
-                                                                                    class="btn btn-sm btn-warning">Edit</a>
-                                                                                <a href=""
-                                                                                    class="btn btn-sm btn-danger">Delete</a>
+                                                                                    class="btn btn-sm btn-warning"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#incomeEdit{{$data->id}}">Edit</a>
+                                                                                <form action="{{ route('delete.income') }}"
+                                                                                    method="POST" class="d-inline">
+                                                                                    @csrf
+                                                                                    <input type="hidden" name="id"
+                                                                                        value="{{ $data->id }}">
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-sm btn-danger"
+                                                                                        onclick="return confirm('Are you sure you want to delete this income information?')">Delete</button>
+                                                                                </form>
                                                                             </td>
                                                                         </tr>
+                                                                        @include('user.edit-income')
                                                                     @endforeach
                                                                 @else
                                                                     <tr>

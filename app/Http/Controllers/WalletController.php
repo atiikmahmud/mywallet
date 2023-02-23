@@ -7,6 +7,7 @@ use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 class WalletController extends Controller
 {
@@ -110,6 +111,46 @@ class WalletController extends Controller
         }
 
         return view('user.search.income-filter-by-year', compact('title', 'categories', 'sumOfResult'));
+    }
+
+    # User Income Edit
+    public function editIncome(Request $request)
+    {
+        // dd($request->all());
+
+        $request->validate([
+            'title'      => 'required|string|max:255',
+            'amount'     => 'required',
+            'purpose'    => 'required',
+        ]);
+
+        try
+        {
+            $wallet = Wallet::find($request->id);
+
+            $wallet->title       = $request->title;
+            $wallet->amount      = $request->amount;
+            $wallet->status      = 1; //Income
+            $wallet->category_id = $request->purpose;
+            $wallet->user_id     = Auth::user()->id;
+            $wallet->save();            
+            return redirect()->route('user.income')->with('success','Update Income Info Successfully!');
+        }
+        catch (\Throwable $th) 
+        {
+            //throw $th;
+            return redirect()->route('user.income')->with('error','Income Info Not Update!');
+        }
+
+    }
+
+    # User Income Delete
+    public function deleteIncome(Request $request)
+    {
+        $wallet = Wallet::find($request->id);
+        $wallet->delete();
+
+        return redirect()->route('user.income')->with('success', 'Income info delete successfully!');
     }
 
     /* ======================================================================================================================== */
