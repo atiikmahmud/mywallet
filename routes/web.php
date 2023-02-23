@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/search-expense',  [WalletController::class, 'expenseSearchByDate'])->name('search.expense.date');
     Route::get('/search-expense-month', [WalletController::class, 'expenseSearchByMonth'])->name('search.expense.month');
     Route::get('/search-expense-year', [WalletController::class, 'expenseSearchByYear'])->name('search.expense.year');
+    Route::post('/edit-expense',     [WalletController::class, 'editExpense'])->name('edit.expense');
+    Route::post('/delete-expense',   [WalletController::class, 'deleteExpense'])->name('delete.expense');
     
     Route::get('/income',           [WalletController::class, 'userIncome'])->name('user.income');
     Route::post('/add-income',      [WalletController::class, 'addIncome'])->name('user.add.income');

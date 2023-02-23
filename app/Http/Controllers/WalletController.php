@@ -254,4 +254,43 @@ class WalletController extends Controller
 
         return view('user.search.expense-filter-by-year', compact('title', 'categories', 'sumOfResult'));
     }
+
+    # User Expense Edit
+    public function editExpense(Request $request)
+    {
+        // dd($request->all());
+
+        $request->validate([
+            'title'      => 'required|string|max:255',
+            'amount'     => 'required',
+            'purpose'    => 'required',
+        ]);
+
+        try
+        {
+            $wallet = Wallet::find($request->id);
+
+            $wallet->title       = $request->title;
+            $wallet->amount      = $request->amount;
+            $wallet->category_id = $request->purpose;
+            $wallet->user_id     = Auth::user()->id;
+            $wallet->save();            
+            return redirect()->route('user.expense')->with('success','Update Expense Info Successfully!');
+        }
+        catch (\Throwable $th) 
+        {
+            //throw $th;
+            return redirect()->route('user.expense')->with('error','Expense Info Not Update!');
+        }
+
+    }
+
+    # User Expense Delete
+    public function deleteExpense(Request $request)
+    {
+        $wallet = Wallet::find($request->id);
+        $wallet->delete();
+
+        return redirect()->route('user.expense')->with('success', 'Expense info delete successfully!');
+    }
 }
