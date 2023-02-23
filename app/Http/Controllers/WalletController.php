@@ -79,11 +79,11 @@ class WalletController extends Controller
         $title = 'Monthly Income';
         $categories = Category::where('status', 1)->get();
         
-        $result = Wallet::where('status', 1)->where('user_id', Auth::user()->id)->with('categories')
-        ->orderBy('created_at','desc')
+        $result = Wallet::whereYear('created_at', date('Y'))->where('status', 1)
+        ->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','asc')
         ->get()
         ->groupBy(function (Wallet $item) {
-            return $item->created_at->format('Y-m');
+            return $item->created_at->format('M');
         });
         $sumOfResult = collect();
         foreach ($result as $key => $value) {
@@ -222,10 +222,11 @@ class WalletController extends Controller
         $title = 'Monthly Expense';
         $categories = Category::where('status', 0)->get();
         
-        $result = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')
+        $result = Wallet::whereYear('created_at', date('Y'))->where('status', 0)
+        ->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','asc')
         ->get()
         ->groupBy(function (Wallet $item) {
-            return $item->created_at->format('Y-m');
+            return $item->created_at->format('M');
         });
         $sumOfResult = collect();
         foreach ($result as $key => $value) {

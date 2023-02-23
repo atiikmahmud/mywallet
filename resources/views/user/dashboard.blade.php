@@ -8,37 +8,8 @@
                 <div class="card shadow wallet-dashboard-area">
                     <div class="card-body">
                         <div class="main-body-area">
-                            
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('user.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.income') }}">Income</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Expenses</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Loan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Owed</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Pay Plan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Report</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.expense') }}">Contact</a>
-                                </li>
-                            </ul>
+
+                            @include('user.navbar')
 
                             <!-- Top Card Section Begin -->
                             <div class="row mt-3">

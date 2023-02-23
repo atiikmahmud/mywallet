@@ -9,17 +9,7 @@
                     <div class="card-body">
                         <div class="main-body-area">
                             <!-- Navbar Section Begin -->
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.income') }}">Income</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('user.expense') }}">Expenses</a>
-                                </li>
-                            </ul>
+                            @include('user.navbar')
                             <!-- Navbar Section End -->
 
                             <!-- Body Section Begin -->

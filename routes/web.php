@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OthersController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TransectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 use App\Models\Wallet;
@@ -34,6 +37,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/search-income-year', [WalletController::class, 'incomeSearchByYear'])->name('search.income.year');
     Route::post('/edit-income',     [WalletController::class, 'editIncome'])->name('edit.income');
     Route::post('/delete-income',   [WalletController::class, 'deleteIncome'])->name('delete.income');
+
+    Route::get('/loan',             [TransectionController::class, 'loan'])->name('user.loan');
+
+    Route::get('/owed',             [TransectionController::class, 'owed'])->name('user.owed');
+
+    Route::get('/pay-plan',         [TransectionController::class, 'payplan'])->name('user.payplan');
+
+    Route::get('/report',           [ReportController::class, 'index'])->name('user.report');
+
+    Route::get('/about',            [OthersController::class, 'about'])->name('about');
+    Route::get('/contact',          [OthersController::class, 'contact'])->name('contact');
 }); 
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
