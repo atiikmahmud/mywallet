@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TransectionController extends Controller
 {
+    # Loan
     public function loan()
     {
         $title = 'Loan';
@@ -31,7 +32,8 @@ class TransectionController extends Controller
         return view('user.transection.loan.loan', compact('title', 'categories', 'loans', 'loans_sum'));
     }
 
-    public function unPaidLoan()
+    # Paid Loan
+    public function PaidLoan()
     {
         $title = 'Loan';
         $categories = Category::where('status', 0)->get();
@@ -52,6 +54,7 @@ class TransectionController extends Controller
         return view('user.transection.loan.paidLoan', compact('title', 'categories', 'loans', 'loans_sum'));
     }
 
+    # Action for Paid Loan
     public function loanAction(Request $request)
     {
         $action = Transection::find($request->id);
@@ -60,6 +63,7 @@ class TransectionController extends Controller
         return redirect()->back()->with('success', 'Loan paid successfully');
     }
 
+    # Add New Loan
     public function addNewLoan(Request $request)
     {
         $request->validate([
@@ -88,8 +92,6 @@ class TransectionController extends Controller
     # User Loan Edit
     public function editLoan(Request $request)
     {
-        // dd($request->all());
-
         $request->validate([
             'title'      => 'required|string|max:255',
             'amount'     => 'required',
@@ -105,27 +107,29 @@ class TransectionController extends Controller
             $wallet->category_id = $request->purpose;
             $wallet->user_id     = Auth::user()->id;
             $wallet->save();            
-            return redirect()->route('user.loan')->with('success','Update Loan Info Successfully!');
+            return redirect()->back()->with('success','Update Loan Info Successfully!');
         }
         catch (\Throwable $th) 
         {
             //throw $th;
-            return redirect()->route('user.loan')->with('error','Loan Info Not Update!');
+            return redirect()->back()>with('error','Loan Info Not Update!');
         }
 
     }
 
+    # Delete Loan
     public function deleteLoan(Request $request)
     {
         $loan = Transection::find($request->id);
         $loan->delete();
 
-        return redirect()->route('user.loan')->with('success', 'Loan info delete successfully!');
+        return redirect()->back()->with('success', 'Loan info delete successfully!');
     }
 
 
     /* ======================================================================================================================= */
 
+    # Owed
     public function owed()
     {
         $title = 'Owed';
@@ -134,6 +138,7 @@ class TransectionController extends Controller
 
     /* ======================================================================================================================= */
 
+    # Payment Plan
     public function payplan()
     {
         $title = 'Pay-Plan';

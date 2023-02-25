@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-income',   [WalletController::class, 'deleteIncome'])->name('delete.income');
 
     Route::get('/loan',             [TransectionController::class, 'loan'])->name('user.loan');
-    Route::get('/paid-loan',        [TransectionController::class, 'unPaidLoan'])->name('user.paid.loan');
+    Route::get('/paid-loan',        [TransectionController::class, 'PaidLoan'])->name('user.paid.loan');
     Route::post('/do-paid-loan',    [TransectionController::class, 'loanAction'])->name('user.do.paid.loan');
     Route::post('/add-loan',        [TransectionController::class, 'addNewLoan'])->name('add.new.loan');
     Route::post('/edit-loan',       [TransectionController::class, 'editLoan'])->name('edit.loan');
