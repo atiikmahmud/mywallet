@@ -31,30 +31,43 @@
                                                     <div class="contact-form mt-4">
                                                         <div class="card">
                                                             <div class="card-body">
-                                                                <form action="" method="POST">
+                                                                <form action="{{ route('contact.msg') }}" method="POST">
                                                                     @csrf
                                                                     <div class="mb-3">
                                                                         <label for="name"
                                                                             class="form-label">Name</label>
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                                             id="name" name="name"
-                                                                            value="Atik Mahmud">
+                                                                            value="{{ $user->name }}" required>
+                                                                        @error('name')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="email" class="form-label">Email
                                                                             address</label>
-                                                                        <input type="email" class="form-control"
+                                                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                                             id="email" name="email"
-                                                                            value="atiikmahmud@gmail.com">
+                                                                            value="{{ $user->email }}" required>
+                                                                            @error('email')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="message"
                                                                             class="form-label">Message</label>
-                                                                        <textarea class="form-control"id="message" name="message" rows="5">
-                                                                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                                                        </textarea>
+                                                                        <textarea class="form-control @error('message') is-invalid @enderror"id="message" name="message" rows="5" required></textarea>
+                                                                        @error('message')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
                                                                     </div>
 
                                                                     <button type="submit"

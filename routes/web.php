@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/about',            [OthersController::class, 'about'])->name('about');
     Route::get('/contact',          [OthersController::class, 'contact'])->name('contact');
+    Route::post('/contact-message', [OthersController::class, 'contactMessage'])->name('contact.msg');
 }); 
 
 Route::group(['middleware' => ['auth','isAdmin']], function () {
