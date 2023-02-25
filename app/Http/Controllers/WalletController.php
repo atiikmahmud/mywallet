@@ -50,7 +50,7 @@ class WalletController extends Controller
     # User Income Search by Date Range
     public function incomeSearchByDate(Request $request)
     {
-        $title = 'Search';
+        $title = 'Search Income';
         $categories = Category::where('status', 1)->get();
 
         $inputStartDate = $request->start_date;
@@ -194,7 +194,7 @@ class WalletController extends Controller
     # User Expenses Search by Date Range
     public function expenseSearchByDate(Request $request)
     {
-        $title = 'Search';
+        $title = 'Search Expenses';
         $categories = Category::where('status', 0)->get();
 
         $inputStartDate = $request->start_date;
@@ -219,7 +219,7 @@ class WalletController extends Controller
     # User Expense Filter by Month
     public function expenseSearchByMonth()
     {
-        $title = 'Monthly Expense';
+        $title = 'Monthly Expenses';
         $categories = Category::where('status', 0)->get();
         
         $result = Wallet::whereYear('created_at', date('Y'))->where('status', 0)
@@ -239,7 +239,7 @@ class WalletController extends Controller
     # User Expense Filter by Year
     public function expenseSearchByYear()
     {
-        $title = 'Yearly Expense';
+        $title = 'Yearly Expenses';
         $categories = Category::where('status', 0)->get();
         
         $result = Wallet::where('status', 0)->where('user_id', Auth::user()->id)->with('categories')

@@ -3,10 +3,10 @@
         <a class="nav-link @if($title == 'Dashboard') active @endif" aria-current="page" href="{{ route('user.dashboard') }}">Dashboard</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link @if($title == 'Income') active @endif" href="{{ route('user.income') }}">Income</a>
+        <a class="nav-link @if($title == 'Income' || $title == 'Search Income' || $title == 'Monthly Income' || $title == 'Yearly Income') active @endif" href="{{ route('user.income') }}">Income</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link @if($title == 'Expenses') active @endif" href="{{ route('user.expense') }}">Expenses</a>
+        <a class="nav-link @if($title == 'Expenses' || $title == 'Search Expenses' || $title == 'Monthly Expenses' || $title == 'Yearly Expenses') active @endif" href="{{ route('user.expense') }}">Expenses</a>
     </li>
     <li class="nav-item">
         <a class="nav-link @if($title == 'Loan') active @endif" href="{{ route('user.loan') }}">Loan</a>
