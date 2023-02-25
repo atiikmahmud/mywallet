@@ -7,6 +7,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
+use App\Models\Transection;
 use App\Models\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-income',   [WalletController::class, 'deleteIncome'])->name('delete.income');
 
     Route::get('/loan',             [TransectionController::class, 'loan'])->name('user.loan');
+    Route::get('/paid-loan',        [TransectionController::class, 'unPaidLoan'])->name('user.paid.loan');
+    Route::post('/do-paid-loan',    [TransectionController::class, 'loanAction'])->name('user.do.paid.loan');
+    Route::post('/add-loan',        [TransectionController::class, 'addNewLoan'])->name('add.new.loan');
+    Route::post('/edit-loan',       [TransectionController::class, 'editLoan'])->name('edit.loan');
+    Route::post('/delete-loan',     [TransectionController::class, 'deleteLoan'])->name('delete.loan');
 
     Route::get('/owed',             [TransectionController::class, 'owed'])->name('user.owed');
 

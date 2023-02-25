@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Wallet::factory(200)->create();
+        // \App\Models\Wallet::factory(200)->create();
+
+        \App\Models\Transection::factory(50)->create();
     }
 }

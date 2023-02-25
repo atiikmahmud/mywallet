@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wallet extends Model
+class Transection extends Model
 {
     use HasFactory;
 
-    protected $table = 'wallets';
+    protected $table = 'transections';
 
-    protected $fillables = ['title', 'amount', 'status', 'category_id', 'user_id'];
+    protected $fillables = ['title', 'amount', 'status', 'loan_status', 'category_id', 'user_id'];
 
     public function users() 
     {
