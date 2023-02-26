@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\Wallet::factory(200)->create();
 
-        \App\Models\Transection::factory(50)->create();
+        \App\Models\Transection::factory(20)->create();
     }
 }

@@ -47,6 +47,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-loan',     [TransectionController::class, 'deleteLoan'])->name('delete.loan');
 
     Route::get('/owed',             [TransectionController::class, 'owed'])->name('user.owed');
+    Route::get('/paid-owed',        [TransectionController::class, 'paidOwed'])->name('user.paid.owed');
+    Route::post('/do-paid-owed',    [TransectionController::class, 'owedAction'])->name('user.do.paid.owed');
+    Route::post('/add-owed',        [TransectionController::class, 'addNewOwed'])->name('add.new.owed');
+    Route::post('/edit-owed',       [TransectionController::class, 'editOwed'])->name('edit.owed');
+    Route::post('/delete-owed',     [TransectionController::class, 'deleteOwed'])->name('delete.owed');
 
     Route::get('/pay-plan',         [TransectionController::class, 'payplan'])->name('user.payplan');
 
