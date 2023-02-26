@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-payplan',  [TransectionController::class, 'deletePayPlan'])->name('delete.payplan');
 
     Route::get('/report',           [ReportController::class, 'index'])->name('user.report');
+    Route::get('/monthly-income',   [ReportController::class, 'monthlyIncome'])->name('user.month.income.report');
+    Route::get('/pdf',              [ReportController::class, 'downloadPDF'])->name('report.pdf');
 
     Route::get('/about',            [OthersController::class, 'about'])->name('about');
     Route::get('/contact',          [OthersController::class, 'contact'])->name('contact');
