@@ -253,6 +253,118 @@ class TransectionController extends Controller
     public function payplan()
     {
         $title = 'Pay-Plan';
-        return view('user.transection.payplan', compact('title'));
+        $categories = Category::where('status', 0)->get();
+        
+        $payPlan = Transection::where('status', 2)
+        ->where('loan_status', 0)
+        ->where('user_id', Auth::user()->id)
+        ->with('categories')
+        ->orderBy('created_at','desc')
+        ->get();
+
+        $payPlanSum = Transection::where('status', 2)
+        ->where('loan_status', 0)
+        ->where('user_id', Auth::user()->id)
+        ->with('categories')
+        ->orderBy('created_at','desc')
+        ->sum('amount');
+
+        return view('user.transection.payplan.payplan', compact('title', 'categories', 'payPlan', 'payPlanSum'));
+    }
+
+    # Paid Pay Plan
+    public function paidPayPlan()
+    {
+        $title = 'Pay-Plan';
+        $categories = Category::where('status', 0)->get();
+        
+        $payPlan = Transection::where('status', 2)
+        ->where('loan_status', 1)
+        ->where('user_id', Auth::user()->id)
+        ->with('categories')
+        ->orderBy('created_at','desc')
+        ->get();
+
+        $payPlanSum = Transection::where('status', 2)
+        ->where('loan_status', 1)
+        ->where('user_id', Auth::user()->id)
+        ->with('categories')
+        ->orderBy('created_at','desc')
+        ->sum('amount');
+
+        return view('user.transection.payplan.paid-payplan', compact('title', 'categories', 'payPlan', 'payPlanSum'));
+    }
+
+    # Action for Paid Pay Plan
+    public function payAction(Request $request)
+    {
+        $action = Transection::find($request->id);
+        $action->loan_status = 1;        
+        $action->save();
+        return redirect()->back()->with('success', 'Plan paid successfully');
+    }
+
+    # Add New Pay Plan
+    public function addPayPlan(Request $request)
+    {
+        $request->validate([
+            'title'      => 'required|string|max:255',
+            'amount'     => 'required',
+            'purpose'    => 'required',
+        ]);
+
+        try
+        {
+            $wallet = new Transection;
+            $wallet->title       = $request->title;
+            $wallet->amount      = $request->amount;
+            $wallet->status      = 2; //Owed
+            $wallet->category_id = $request->purpose;
+            $wallet->user_id     = Auth::user()->id;
+            $wallet->save();            
+            return redirect()->back()->with('success','New Pay Plan Added Successfully!');
+        }
+        catch (\Throwable $th) 
+        {
+            //throw $th;
+            return redirect()->back()->with('error','New Pay Plan Amount Not Added!');
+        }
+    }
+
+    # User Pay Plan Edit
+    public function editPayPlan(Request $request)
+    {
+        $request->validate([
+            'title'      => 'required|string|max:255',
+            'amount'     => 'required',
+            'purpose'    => 'required',
+        ]);
+
+        try
+        {
+            $wallet = Transection::find($request->id);
+
+            $wallet->title       = $request->title;
+            $wallet->amount      = $request->amount;
+            $wallet->category_id = $request->purpose;
+            $wallet->user_id     = Auth::user()->id;
+            $wallet->save();            
+            return redirect()->back()->with('success','Update Pay Plan Info Successfully!');
+        }
+        catch (\Throwable $th) 
+        {
+            //throw $th;
+            return redirect()->back()>with('error','Pay Plan Info Not Update!');
+        }
+
+    }
+
+    # Delete Pay Plan
+    public function deletePayPlan(Request $request)
+    {
+        $loan = Transection::find($request->id);
+        $loan->delete();
+
+        return redirect()->back()->with('success', 'Pay Plan info delete successfully!');
     }
 }

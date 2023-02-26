@@ -54,6 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/delete-owed',     [TransectionController::class, 'deleteOwed'])->name('delete.owed');
 
     Route::get('/pay-plan',         [TransectionController::class, 'payplan'])->name('user.payplan');
+    Route::get('/paid-payplan',     [TransectionController::class, 'paidPayPlan'])->name('user.paid.plan');
+    Route::post('/do-paid-plan',    [TransectionController::class, 'payAction'])->name('user.do.paid.pay');
+    Route::post('/add-payplan',     [TransectionController::class, 'addPayPlan'])->name('add.new.payplan');
+    Route::post('/edit-payplan',    [TransectionController::class, 'editPayPlan'])->name('edit-payplan');
+    Route::post('/delete-payplan',  [TransectionController::class, 'deletePayPlan'])->name('delete.payplan');
 
     Route::get('/report',           [ReportController::class, 'index'])->name('user.report');
 

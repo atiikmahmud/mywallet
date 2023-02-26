@@ -1,16 +1,16 @@
 <!-- Edit Income Modal Begin -->
-<div class="modal fade" id="loanEdit{{$data->id}}" tabindex="-1" aria-labelledby="loanEdit{{$data->id}}Label" aria-hidden="true">
+<div class="modal fade" id="payplanEdit{{$data->id}}" tabindex="-1" aria-labelledby="payplanEdit{{$data->id}}Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="expenseEdit{{$data->id}}Label">Edit Your Loan</h1>
+                <h1 class="modal-title fs-5" id="payplanEdit{{$data->id}}Label">Edit Your Pay Plan</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="add-income-section">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('edit.loan') }}" method="POST">
+                            <form action="{{ route('edit-payplan') }}" method="POST">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{ $data->id }}">
@@ -29,7 +29,7 @@
                                 <div class="mb-3">
                                     <label for="purpose" class="form-label">Purpose</label>
                                     <select class="form-select" aria-label="purpose" name="purpose" required>
-                                        <option selected>Select your loan purpose</option>
+                                        <option selected>Select your pay purpose</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" @if($category->id == $data->category_id) selected @endif>{{ $category->name }}</option>
                                         @endforeach

@@ -29,7 +29,7 @@
                                 <div class="mb-3">
                                     <label for="purpose" class="form-label">Purpose</label>
                                     <select class="form-select" aria-label="purpose" name="purpose" required>
-                                        <option selected>Select your income purpose</option>
+                                        <option selected>Select your owed purpose</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}" @if($category->id == $data->category_id) selected @endif>{{ $category->name }}</option>
                                         @endforeach

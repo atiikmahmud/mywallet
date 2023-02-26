@@ -16,7 +16,7 @@ class TransectionFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'amount' => mt_rand(1000,5000),
-            'status' => 1,
+            'status' => 2,
             'loan_status' => 0,
             // 'category_id' => mt_rand(1,4),
             'category_id' => mt_rand(5,13),

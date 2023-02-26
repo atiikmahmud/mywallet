@@ -2,7 +2,7 @@
 <div class="add-income-section">
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('add.new.owed') }}" method="POST">
+            <form action="{{ route('add.new.payplan') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -18,7 +18,7 @@
                 <div class="mb-3">
                     <label for="purpose" class="form-label">Purpose</label>
                     <select class="form-select" aria-label="purpose" name="purpose" required>
-                        <option selected>Select your owed purpose</option>
+                        <option selected>Select your pay purpose</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
