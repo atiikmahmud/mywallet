@@ -21,7 +21,7 @@
                                     <div class="card-body income-body-area">
                                         <div class="d-flex justify-content-between mb-3">
                                             <a href="{{ route('user.report') }}" class="btn btn-sm btn-dark">Cancel</a>
-                                            <a href="{{ route('monthly.income.report.pdf') }}" class="btn btn-sm btn-primary">PDF Download</a>
+                                            <a href="{{ route('monthly.expense.report.pdf') }}" class="btn btn-sm btn-primary">PDF Download</a>
                                         </div>
                                         <div class="border rounded">
                                             <iframe src="http://127.0.0.1:8000/monthly-expense-report" frameborder="0" width="100%" height="432px"></iframe>

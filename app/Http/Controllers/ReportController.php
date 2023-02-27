@@ -36,7 +36,7 @@ class ReportController extends Controller
         $incomeList = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
         $incomeListSum = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 1)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
 
-        $pdf = PDF::loadView('user.report.monthly-income', compact('incomeList', 'incomeListSum'));
+        $pdf = PDF::loadView('user.report.monthly-income-report-pdf', compact('incomeList', 'incomeListSum'));
 
         return $pdf->download('Monthly Income Report.pdf');
     }
@@ -62,7 +62,7 @@ class ReportController extends Controller
         $expenseList = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->orderBy('created_at','desc')->get();
         $expenseListSum = Wallet::whereMonth('created_at', Carbon::now()->month)->where('status', 0)->where('user_id', Auth::user()->id)->with('categories')->sum('amount');
 
-        $pdf = PDF::loadView('user.report.monthly-expense', compact('expenseList', 'expenseListSum'));
+        $pdf = PDF::loadView('user.report.monthly-expense-report-pdf', compact('expenseList', 'expenseListSum'));
 
         return $pdf->download('Monthly Expense Report.pdf');
     }
